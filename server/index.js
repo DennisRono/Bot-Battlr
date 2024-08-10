@@ -7,4 +7,6 @@ const port = 8080
 server.use(middlewares)
 server.use(router)
 
-server.listen(port)
+server.listen(port, () => console.log(`Server is Running on PORT: ${port}`))
+
+module.exports = server
