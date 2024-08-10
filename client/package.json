@@ -5,7 +5,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "server": "json-server --watch db.json -p 8001",
     "watch": "npx tailwindcss -i ./src/styles/input.scss -o ./src/styles/output.scss --watch"
   },
   "dependencies": {

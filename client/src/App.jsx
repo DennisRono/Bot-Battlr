@@ -16,10 +16,12 @@ function App() {
     fetch('http://localhost:8001/bots')
       .then((response) => response.json())
       .then((data) => setBots(data))
+      .catch(() => console.error('failed to get bots!'))
 
     fetch('http://localhost:8001/enlistedBots')
       .then((response) => response.json())
       .then((enlistedBots) => setArmy(enlistedBots))
+      .catch(() => console.error('failed to get enlisted bots!'))
   }, [])
 
   const enlistBot = (bot) => {
@@ -39,6 +41,7 @@ function App() {
           setArmy([...army, newBot])
           setBots(bots.filter((b) => b.id !== bot.id))
         })
+        .catch(() => console.error('failed to get enlisted bots!'))
     }
   }
 
