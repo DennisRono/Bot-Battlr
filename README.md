@@ -81,7 +81,7 @@ src/
 
 ## Technologies Used
 
-- **React**: A JavaScript library for building user interfaces.
-- **Tailwind CSS**: A utility-first CSS framework for styling components.
-- **JSON Server**: A full fake REST API for testing and prototyping.
-- **JavaScript**: Programming language used for logic and functionality.
+- **React**
+- **Tailwind CSS**
+- **JSON Server**
+- **JavaScript**
