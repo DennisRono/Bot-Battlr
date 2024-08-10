@@ -13,12 +13,12 @@ function App() {
   const [filter, setFilter] = useState('All')
 
   useEffect(() => {
-    fetch('http://localhost:8001/bots')
+    fetch('https://bot-battlr-l2ol.onrender.com//bots')
       .then((response) => response.json())
       .then((data) => setBots(data))
       .catch(() => console.error('failed to get bots!'))
 
-    fetch('http://localhost:8001/enlistedBots')
+    fetch('https://bot-battlr-l2ol.onrender.com//enlistedBots')
       .then((response) => response.json())
       .then((enlistedBots) => setArmy(enlistedBots))
       .catch(() => console.error('failed to get enlisted bots!'))
@@ -29,7 +29,7 @@ function App() {
       !army.find((b) => b.id === bot.id) &&
       !army.find((b) => b.bot_class === bot.bot_class)
     ) {
-      fetch('http://localhost:8001/enlistedBots', {
+      fetch('https://bot-battlr-l2ol.onrender.com//enlistedBots', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ function App() {
   }
 
   const releaseBot = (bot) => {
-    fetch(`http://localhost:8001/enlistedBots/${bot.id}`, {
+    fetch(`https://bot-battlr-l2ol.onrender.com//enlistedBots/${bot.id}`, {
       method: 'DELETE',
     }).then(() => {
       setArmy(army.filter((b) => b.id !== bot.id))
@@ -54,12 +54,12 @@ function App() {
   }
 
   const deleteBot = (bot) => {
-    fetch(`http://localhost:8001/bots/${bot.id}`, { method: 'DELETE' }).then(
-      () => {
-        setBots(bots.filter((b) => b.id !== bot.id))
-        setArmy(army.filter((b) => b.id !== bot.id))
-      }
-    )
+    fetch(`https://bot-battlr-l2ol.onrender.com//bots/${bot.id}`, {
+      method: 'DELETE',
+    }).then(() => {
+      setBots(bots.filter((b) => b.id !== bot.id))
+      setArmy(army.filter((b) => b.id !== bot.id))
+    })
   }
 
   const viewBotSpecs = (bot) => {
