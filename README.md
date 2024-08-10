@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Bot Battlr
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Advanced Features](#advanced-features)
+- [Project Structure](#project-structure)
+- [Technologies Used](#technologies-used)
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+To run this project locally, follow these steps:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Clone the repository:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+   ```bash
+   git clone https://github.com/DennisRono/Bot-Battlr.git
+   cd Bot-Battlr
+   ```
 
-### `npm test`
+2. Install dependencies:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   npm install
+   ```
 
-### `npm run build`
+3. Start the JSON server:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   npm run server
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Start the React application:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   npm start
+   ```
 
-### `npm run eject`
+5. Open your browser and navigate to `http://localhost:3000`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Usage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **View Bots**: The application initially displays a collection of available bots.
+- **View Bot Details**: Click on any bot card to view more details about the bot.
+- **Enlist Bots**: Enlist a bot into your army by clicking the "Enlist" button.
+- **Manage Army**: View your enlisted bots in the "YourBotArmy" section. You can release or permanently delete a bot from your army.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Features
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Bot Collection**: Browse through a list of available bots.
+- **Enlist Bots**: Add bots to your army. Each bot can only be enlisted once.
+- **Release Bots**: Remove a bot from your army.
+- **Delete Bots**: Permanently delete a bot from the collection and your army.
+- **Persistent Storage**: Enlisted bots are persisted in the database, ensuring data is retained between sessions.
 
-## Learn More
+## Advanced Features
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Bot Details View**: Choose if you want to enlist a bot or just view its data. Clicking on a bot card will display a detailed view of the bot.
+- **Sort Bots**: Sort bots by health, damage, or armor using the `SortBar`.
+- **Filter Bots**: Filter bots by their class using the `FilterBar`.
+- **One Bot Per Class**: Ensure that only one bot from each class can be enlisted in your army.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Project Structure
 
-### Code Splitting
+```
+src/
+│
+├── components/
+│   ├── BotCard.js        # Renders an individual bot card
+│   ├── BotCollection.js  # Renders the list of all available bots
+│   ├── BotSpecs.js       # Renders detailed view of a selected bot
+│   ├── YourBotArmy.js    # Renders the list of enlisted bots
+│   ├── SortBar.js        # Component for sorting bots
+│   └── FilterBar.js      # Component for filtering bots by class
+│
+├── App.js                # Main application component
+└── index.js              # Entry point of the application
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Technologies Used
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **React**: A JavaScript library for building user interfaces.
+- **Tailwind CSS**: A utility-first CSS framework for styling components.
+- **JSON Server**: A full fake REST API for testing and prototyping.
+- **JavaScript**: Programming language used for logic and functionality.
