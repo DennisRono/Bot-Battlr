@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import BotCollection from './components/BotCollection'
-import YourBotArmy from './components/YourBotArmy'
+import MyBotArmy from './components/MyBotArmy'
 import BotSpecs from './components/BotSpecs'
 import SortBar from './components/SortBar'
 import FilterBar from './components/FilterBar'
@@ -11,17 +11,23 @@ function App() {
   const [selectedBot, setSelectedBot] = useState(null)
   const [sortBy, setSortBy] = useState('health')
   const [filter, setFilter] = useState('All')
+  const [isCollectionLoading, setIsCollectionLoading] = useState(false)
+  const [isMyArmyLoading, setIsMyArmyLoading] = useState(false)
 
   useEffect(() => {
+    setIsCollectionLoading(true)
     fetch('https://bot-battlr-l2ol.onrender.com/bots')
       .then((response) => response.json())
       .then((data) => setBots(data))
       .catch(() => console.error('failed to get bots!'))
+      .finally(() => setIsCollectionLoading(false))
 
+    setIsMyArmyLoading(true)
     fetch('https://bot-battlr-l2ol.onrender.com/enlistedBots')
       .then((response) => response.json())
       .then((enlistedBots) => setArmy(enlistedBots))
       .catch(() => console.error('failed to get enlisted bots!'))
+      .finally(() => setIsMyArmyLoading(false))
   }, [])
 
   const enlistBot = (bot) => {
@@ -77,13 +83,22 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
-      <YourBotArmy army={army} releaseBot={releaseBot} deleteBot={deleteBot} />
+      <MyBotArmy
+        army={army}
+        releaseBot={releaseBot}
+        deleteBot={deleteBot}
+        isMyArmyLoading={isMyArmyLoading}
+      />
       <SortBar sortBy={sortBy} setSortBy={setSortBy} />
       <FilterBar filter={filter} setFilter={setFilter} />
       {selectedBot ? (
         <BotSpecs bot={selectedBot} goBack={goBack} enlistBot={enlistBot} />
       ) : (
-        <BotCollection bots={sortedBots} enlistBot={viewBotSpecs} />
+        <BotCollection
+          bots={sortedBots}
+          enlistBot={viewBotSpecs}
+          isCollectionLoading={isCollectionLoading}
+        />
       )}
     </div>
   )

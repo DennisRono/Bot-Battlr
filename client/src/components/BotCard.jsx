@@ -2,7 +2,7 @@ import React from 'react'
 
 function BotCard({ bot, handleClick, handleDelete }) {
   return (
-    <div className="bot-card bg-white rounded-lg shadow-md p-4 m-4 w-64 overflow-hidden">
+    <div className="bot-card bg-white rounded-lg shadow-md p-4 m-4 w-64 overflow-hidden hover:scale-105 cursor-pointer">
       <img
         src={bot.avatar_url}
         alt={bot.name}
@@ -18,10 +18,13 @@ function BotCard({ bot, handleClick, handleDelete }) {
       <p className="text-gray-600 text-sm mb-1">Armor: {bot.armor}</p>
       <div className="mt-4">
         <button
-          onClick={handleClick}
+          onClick={(e) => {
+            e.stopPropagation()
+            handleClick()
+          }}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
         >
-          {handleDelete ? 'Release' : 'Enlist'}
+          {handleDelete ? 'Release' : 'View'}
         </button>
         {handleDelete && (
           <button

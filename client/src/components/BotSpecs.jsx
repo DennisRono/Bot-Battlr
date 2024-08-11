@@ -32,7 +32,9 @@ function BotSpecs({ bot, goBack, enlistBot }) {
           Go Back
         </button>
         <button
-          onClick={() => enlistBot(bot)}
+          onClick={() => {
+            enlistBot(bot)
+          }}
           className="bg-green-500 text-white px-4 py-2 rounded"
         >
           Enlist Bot
